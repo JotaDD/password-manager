@@ -1,4 +1,5 @@
 import './App.css';
+import Form from './components/Form';
 import Title from './components/Title';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
       <Title>
         Gerenciador de senhas
       </Title>
+      <Form />
     </div>
   );
 }
