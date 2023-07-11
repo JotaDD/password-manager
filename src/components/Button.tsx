@@ -1,10 +1,12 @@
 type ButtonProps = {
   text: string;
-
+  handleClick?: () => void;
 };
-function Button({ text, ...props }: ButtonProps) {
+function Button({ text, handleClick = undefined, ...props }: ButtonProps) {
   return (
-    <button { ...props }>{ text }</button>
+    <button onClick={ handleClick } { ...props }>
+      { text }
+    </button>
   );
 }
 export default Button;
