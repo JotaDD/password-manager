@@ -1,10 +1,14 @@
 type ButtonProps = {
   text: string;
+  disabled?: boolean;
   handleClick?: () => void;
 };
-function Button({ text, handleClick = undefined, ...props }: ButtonProps) {
+function Button({ text, disabled = false, handleClick = undefined }: ButtonProps) {
   return (
-    <button onClick={ handleClick } { ...props }>
+    <button
+      onClick={ handleClick }
+      disabled={ disabled }
+    >
       { text }
     </button>
   );
