@@ -6,6 +6,7 @@ type ButtonProps = {
   className?: string;
   handleClick?: () => void;
 };
+
 function Button({ text,
   disabled = false,
   handleClick = undefined,

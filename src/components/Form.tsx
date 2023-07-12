@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { ChangeEvent } from 'react';
 import Button from './Button';
 import Input from './Input';
 import ValidationDisplay from './ValidationDisplay';
+import { DataType } from '../types/types';
+import { haveMoreThanEightCharacters,
+  haveNumbersAndLetters,
+  haveSomeSpecialCharacters,
+  haveUpToSixteenCharacters } from '../types/regex';
 
 type FormProps = {
+  isValid: boolean
+  inputValues: DataType
+  handleChange: (event:ChangeEvent<HTMLInputElement>)=> void
+  handleSubmit: (event:ChangeEvent<HTMLFormElement>)=> void
   handleClick: () => void;
 };
 
@@ -12,61 +21,18 @@ type FormProps = {
 // const atLeastSpecialCharacter = '!@#$%^&*';
 // const limit = `[${atLeastOneLetter}${atLeastOneNumber}${atLeastSpecialCharacter}]{8,16}`;
 
-const validateNonEmptyRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).*$/;
-
-const regexV = /^(?=.*\d)(?=.*[a-zA-Z)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,16}$/;
-
-const haveMoreThanEightCharacters = /^.{8,}$/;
-const haveUpToSixteenCharacters = /^.{0,16}$/;
-const haveNumbersAndLetters = /^(?=.*[a-zA-Z])(?=.*\d).*$/;
-const haveSomeSpecialCharacters = /^.*[!@#$%^&*(),.?":{}|<>].*$/;
-
-function Form({ handleClick }: FormProps) {
-  const initialState = {
-    name: '',
-    login: '',
-    password: '',
-    url: '',
-  };
-  const [isValid, setIsValid] = useState(false);
-  const [inputValues, setInputValues] = useState(initialState);
+function Form(props: FormProps) {
+  const { handleClick, handleSubmit, inputValues, handleChange, isValid } = props;
   const { name, login, password, url } = inputValues;
-
-  const checkIfIsNotEmpty = (inputList: object): boolean => {
-    return Object.values(inputList).every((input) => input.length > 0);
-  };
 
   const validate = (
     regex: RegExp,
     validationInput: string,
   ) => regex.test(validationInput);
 
-  const checkIfIsAllValid = () => {
-    if (
-      checkIfIsNotEmpty((inputValues))
-      && validateNonEmptyRegex.test(password)
-      && password.match(regexV)
-    ) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
-  };
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, id } = event.target;
-    setInputValues(
-      {
-        ...inputValues,
-        [id]: value,
-      },
-    );
-    checkIfIsAllValid();
-  };
-
   return (
     <>
-      <form>
+      <form onSubmit={ handleSubmit }>
         <Input
           value={ name }
           handleChange={ (event) => handleChange(event) }
@@ -95,25 +61,27 @@ function Form({ handleClick }: FormProps) {
           type="text"
           id="url"
         />
+        <Button text="Cancelar" handleClick={ handleClick } />
+        <Button className="register-btn button" text="Cadastrar" disabled={ !isValid } />
       </form>
-      <ValidationDisplay
-        content="Possuir 8 ou mais caracteres"
-        validate={ validate(haveMoreThanEightCharacters, password) }
-      />
-      <ValidationDisplay
-        content="Possuir até 16 caracteres"
-        validate={ validate(haveUpToSixteenCharacters, password) }
-      />
-      <ValidationDisplay
-        content="Possuir letras e números"
-        validate={ validate(haveNumbersAndLetters, password) }
-      />
-      <ValidationDisplay
-        content="Possuir algum caractere especial"
-        validate={ validate(haveSomeSpecialCharacters, password) }
-      />
-      <Button text="Cancelar" handleClick={ handleClick } />
-      <Button className="register-btn button" text="Cadastrar" disabled={ !isValid } />
+      <section className="validation">
+        <ValidationDisplay
+          content="Possuir 8 ou mais caracteres"
+          validate={ validate(haveMoreThanEightCharacters, password) }
+        />
+        <ValidationDisplay
+          content="Possuir até 16 caracteres"
+          validate={ validate(haveUpToSixteenCharacters, password) }
+        />
+        <ValidationDisplay
+          content="Possuir letras e números"
+          validate={ validate(haveNumbersAndLetters, password) }
+        />
+        <ValidationDisplay
+          content="Possuir algum caractere especial"
+          validate={ validate(haveSomeSpecialCharacters, password) }
+        />
+      </section>
     </>
   );
 }

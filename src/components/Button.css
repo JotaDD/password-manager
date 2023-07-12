@@ -8,6 +8,11 @@
   line-height: normal;
 }
 
+.button:disabled {
+  color: grey;
+  background-color: darkgrey;
+}
+
 .register-btn {
   border-radius: 100px;
   background-color: #3590F5;
