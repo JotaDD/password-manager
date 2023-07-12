@@ -1,3 +1,5 @@
+import './Title.css';
+
 type TitleProps = {
   children: React.ReactNode;
 };

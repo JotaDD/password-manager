@@ -1,0 +1,21 @@
+.button {
+  background-color: transparent;
+  border: none;
+  color: #3590F5;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.register-btn {
+  border-radius: 100px;
+  background-color: #3590F5;
+  color: #FFF;
+}
+
+.bigger-btn {
+  width: 256px;
+  height: 55px;
+  flex-shrink: 0;
+}

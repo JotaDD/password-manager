@@ -19,7 +19,11 @@ function App() {
       {
         registerListener
           ? <Form handleClick={ handleClick } />
-          : <Button text="Cadastrar Nova Senha" handleClick={ handleClick } />
+          : <Button
+              className="register-btn bigger-btn button"
+              text="Cadastrar Nova Senha"
+              handleClick={ handleClick }
+          />
       }
     </div>
   );

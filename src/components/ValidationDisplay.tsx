@@ -1,15 +1,15 @@
 type ValidationDisplayProps = {
-  children: React.ReactNode;
+  content: string;
   validate: boolean;
 };
-function ValidationDisplay({ children, validate }: ValidationDisplayProps) {
+function ValidationDisplay({ content, validate }: ValidationDisplayProps) {
   return (
     <p
       className={ validate
         ? 'valid-password-check'
         : 'invalid-password-check' }
     >
-      { children }
+      { content }
     </p>
   );
 }

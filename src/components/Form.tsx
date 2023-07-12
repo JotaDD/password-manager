@@ -14,7 +14,7 @@ type FormProps = {
 
 const validateNonEmptyRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).*$/;
 
-const regexV = /^(?=.*[0-9])(?=.*[a-zA-Z)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,16}$/;
+const regexV = /^(?=.*\d)(?=.*[a-zA-Z)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,16}$/;
 
 const haveMoreThanEightCharacters = /^.{8,}$/;
 const haveUpToSixteenCharacters = /^.{0,16}$/;
@@ -97,27 +97,23 @@ function Form({ handleClick }: FormProps) {
         />
       </form>
       <ValidationDisplay
+        content="Possuir 8 ou mais caracteres"
         validate={ validate(haveMoreThanEightCharacters, password) }
-      >
-        Possuir 8 ou mais caracteres
-      </ValidationDisplay>
+      />
       <ValidationDisplay
+        content="Possuir até 16 caracteres"
         validate={ validate(haveUpToSixteenCharacters, password) }
-      >
-        Possuir até 16 caracteres
-      </ValidationDisplay>
+      />
       <ValidationDisplay
+        content="Possuir letras e números"
         validate={ validate(haveNumbersAndLetters, password) }
-      >
-        Possuir letras e números
-      </ValidationDisplay>
+      />
       <ValidationDisplay
+        content="Possuir algum caractere especial"
         validate={ validate(haveSomeSpecialCharacters, password) }
-      >
-        Possuir algum caractere especial
-      </ValidationDisplay>
-      <Button text="Cadastrar" disabled={ !isValid } />
+      />
       <Button text="Cancelar" handleClick={ handleClick } />
+      <Button className="register-btn button" text="Cadastrar" disabled={ !isValid } />
     </>
   );
 }

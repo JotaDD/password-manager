@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import './Input.css';
 
 type InputProps = {
   id: string;
