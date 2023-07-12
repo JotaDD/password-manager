@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from './Button';
 import Input from './Input';
+import ValidationDisplay from './ValidationDisplay';
 
 type FormProps = {
   handleClick: () => void;
@@ -13,7 +14,12 @@ type FormProps = {
 
 const validateNonEmptyRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).*$/;
 
-const regex = /^(?=.*[0-9])(?=.*[a-zA-Z)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,16}$/;
+const regexV = /^(?=.*[0-9])(?=.*[a-zA-Z)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,16}$/;
+
+const haveMoreThanEightCharacters = /^.{8,}$/;
+const haveUpToSixteenCharacters = /^.{0,16}$/;
+const haveNumbersAndLetters = /^(?=.*[a-zA-Z])(?=.*\d).*$/;
+const haveSomeSpecialCharacters = /^.*[!@#$%^&*(),.?":{}|<>].*$/;
 
 function Form({ handleClick }: FormProps) {
   const initialState = {
@@ -30,11 +36,16 @@ function Form({ handleClick }: FormProps) {
     return Object.values(inputList).every((input) => input.length > 0);
   };
 
+  const validate = (
+    regex: RegExp,
+    validationInput: string,
+  ) => regex.test(validationInput);
+
   const checkIfIsAllValid = () => {
     if (
       checkIfIsNotEmpty((inputValues))
       && validateNonEmptyRegex.test(password)
-      && password.match(regex)
+      && password.match(regexV)
     ) {
       setIsValid(true);
     } else {
@@ -85,6 +96,26 @@ function Form({ handleClick }: FormProps) {
           id="url"
         />
       </form>
+      <ValidationDisplay
+        validate={ validate(haveMoreThanEightCharacters, password) }
+      >
+        Possuir 8 ou mais caracteres
+      </ValidationDisplay>
+      <ValidationDisplay
+        validate={ validate(haveUpToSixteenCharacters, password) }
+      >
+        Possuir até 16 caracteres
+      </ValidationDisplay>
+      <ValidationDisplay
+        validate={ validate(haveNumbersAndLetters, password) }
+      >
+        Possuir letras e números
+      </ValidationDisplay>
+      <ValidationDisplay
+        validate={ validate(haveSomeSpecialCharacters, password) }
+      >
+        Possuir algum caractere especial
+      </ValidationDisplay>
       <Button text="Cadastrar" disabled={ !isValid } />
       <Button text="Cancelar" handleClick={ handleClick } />
     </>
