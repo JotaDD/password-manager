@@ -16,11 +16,6 @@ type FormProps = {
   handleClick: () => void;
 };
 
-// const atLeastOneNumber = '0-9';
-// const atLeastOneLetter = 'a-zA-Z';
-// const atLeastSpecialCharacter = '!@#$%^&*';
-// const limit = `[${atLeastOneLetter}${atLeastOneNumber}${atLeastSpecialCharacter}]{8,16}`;
-
 function Form(props: FormProps) {
   const { handleClick, handleSubmit, inputValues, handleChange, isValid } = props;
   const { name, login, password, url } = inputValues;

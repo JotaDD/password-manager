@@ -1,6 +1,7 @@
 import './Button.css';
 
 type ButtonProps = {
+  dataTestId?: string
   text: string;
   disabled?: boolean;
   className?: string;
@@ -10,9 +11,12 @@ type ButtonProps = {
 function Button({ text,
   disabled = false,
   handleClick = undefined,
-  className = 'button' }: ButtonProps) {
+  className = 'button',
+  dataTestId = undefined,
+}: ButtonProps) {
   return (
     <button
+      data-testid={ dataTestId }
       className={ className }
       onClick={ handleClick }
       disabled={ disabled }

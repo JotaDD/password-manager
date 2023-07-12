@@ -14,6 +14,28 @@ const initialState = {
   password: '',
   url: '',
 };
+// const testArray = [{
+//   id: '1',
+//   name: 'Objeto 1',
+//   login: 'login1',
+//   password: 'password1',
+//   url: 'https://example.com/1',
+// },
+// {
+//   id: '2',
+//   name: 'Objeto 2',
+//   login: 'login2',
+//   password: 'password2',
+//   url: 'https://example.com/2',
+// },
+// {
+//   id: '3',
+//   name: 'Objeto 3',
+//   login: 'login3',
+//   password: 'password3',
+//   url: 'https://example.com/3',
+// },
+// ];
 
 function App() {
   const [registerListener, setRegisterListener] = useState(false);
@@ -68,6 +90,10 @@ function App() {
     checkIfIsAllValid();
   };
 
+  const handleDelete = (itemId:string) => {
+    setPasswordList(passwordList.filter(({ id }) => id !== itemId));
+  };
+
   return (
     <div>
       <Title>
@@ -90,8 +116,8 @@ function App() {
       }
       {
         passwordList.length > 0
-          ? <Card passwordList={ passwordList } />
-          : <span>nenhuma senha cadastrada</span>
+          ? <Card handleDelete={ handleDelete } passwordList={ passwordList } />
+          : <p>nenhuma senha cadastrada</p>
       }
     </div>
   );

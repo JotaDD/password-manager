@@ -1,11 +1,13 @@
 import { DataTypeWithId } from '../types/types';
+import Button from './Button';
 import './Card.css';
 
 type CardProps = {
+  handleDelete: (itemId:string)=> void;
   passwordList: DataTypeWithId[];
 };
 
-function Card({ passwordList }: CardProps) {
+function Card({ passwordList, handleDelete }: CardProps) {
   return (
     <div>
       {
@@ -14,7 +16,7 @@ function Card({ passwordList }: CardProps) {
           .map((item: DataTypeWithId) => {
             console.log(typeof item.id);
             return (
-              <p className="card" key={ item.id }>
+              <div className="card" key={ item.id }>
                 <p>
                   <a href={ item.url }>{ item.name }</a>
                   <br />
@@ -26,7 +28,13 @@ function Card({ passwordList }: CardProps) {
                   <span>senha:</span>
                   <span>{ item.password }</span>
                 </p>
-              </p>
+                <Button
+                  dataTestId="remove-btn"
+                  handleClick={ () => handleDelete(item.id) }
+                  text="Deletar"
+                  className="button"
+                />
+              </div>
             );
           })
       }
