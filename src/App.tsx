@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { v4 as uuid } from 'uuid';
 import { useState } from 'react';
 import './App.css';
@@ -15,28 +16,6 @@ const initialState = {
   password: '',
   url: '',
 };
-// const testArray = [{
-//   id: '1',
-//   name: 'Objeto 1',
-//   login: 'login1',
-//   password: 'password1',
-//   url: 'https://example.com/1',
-// },
-// {
-//   id: '2',
-//   name: 'Objeto 2',
-//   login: 'login2',
-//   password: 'password2',
-//   url: 'https://example.com/2',
-// },
-// {
-//   id: '3',
-//   name: 'Objeto 3',
-//   login: 'login3',
-//   password: 'password3',
-//   url: 'https://example.com/3',
-// },
-// ];
 
 function App() {
   const [registerListener, setRegisterListener] = useState(false);
@@ -60,14 +39,15 @@ function App() {
       }]);
     setRegisterListener(false);
     setInputValues(initialState);
+    Swal.fire({
+      icon: 'success',
+      text: 'Serviço cadastrado com sucesso',
+      timer: 1500,
+    });
   };
 
-  const checkIfIsNotEmpty = (inputList: object): boolean => {
-    const teste = Object.values(inputList).every((input) => {
-      return (input.length > 0);
-    });
-    return teste;
-  };
+  const checkIfIsNotEmpty = (inputList: object): boolean => Object.values(inputList)
+    .every((input) => (input.length > 0));
 
   const checkIfIsAllValid = () => {
     if (
@@ -83,7 +63,6 @@ function App() {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement >) => {
     const { value, id } = event.target;
-
     setInputValues(
       {
         ...inputValues,
@@ -92,6 +71,7 @@ function App() {
     );
     checkIfIsAllValid();
   };
+
   const handlePassword = () => {
     setHidePassword(!hidePassword);
   };

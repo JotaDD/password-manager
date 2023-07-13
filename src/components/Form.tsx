@@ -67,9 +67,9 @@ function Form(props: FormProps) {
           type="text"
           id="url"
         />
-        <Button text="Cancelar" handleClick={ handleClick } />
         <Button className="register-btn button" text="Cadastrar" disabled={ !isValid } />
       </form>
+      <Button text="Cancelar" handleClick={ handleClick } />
       <section className="validation">
         <ValidationDisplay
           content="Possuir 8 ou mais caracteres"
