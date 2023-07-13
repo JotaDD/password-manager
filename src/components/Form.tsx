@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+import './Form.css';
 import Button from './Button';
 import Input from './Input';
 import ValidationDisplay from './ValidationDisplay';
@@ -32,7 +33,7 @@ function Form(props: FormProps) {
   ) => regex.test(validationInput);
 
   return (
-    <>
+    <div className="form-container">
       <form onSubmit={ handleSubmit }>
         <Input
           value={ name }
@@ -57,7 +58,8 @@ function Form(props: FormProps) {
         />
         <Button
           dataTestId="show-hide-form-password"
-          text="Mostrar Senha"
+          showPassword={ showPassword }
+          text=""
           handleClick={ (event) => handlePassword(event) }
         />
         <Input
@@ -76,10 +78,6 @@ function Form(props: FormProps) {
           validate={ validate(haveMoreThanEightCharacters, password) }
         />
         <ValidationDisplay
-          content="Possuir até 16 caracteres"
-          validate={ validate(haveUpToSixteenCharacters, password) }
-        />
-        <ValidationDisplay
           content="Possuir letras e números"
           validate={ validate(haveNumbersAndLetters, password) }
         />
@@ -87,8 +85,12 @@ function Form(props: FormProps) {
           content="Possuir algum caractere especial"
           validate={ validate(haveSomeSpecialCharacters, password) }
         />
+        <ValidationDisplay
+          content="Possuir até 16 caracteres"
+          validate={ validate(haveUpToSixteenCharacters, password) }
+        />
       </section>
-    </>
+    </div>
   );
 }
 
