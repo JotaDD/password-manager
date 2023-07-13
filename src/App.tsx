@@ -7,6 +7,7 @@ import Title from './components/Title';
 import Card from './components/Card';
 import { DataType, DataTypeWithId } from './types/types';
 import { regexV, validateNonEmptyRegex } from './types/regex';
+import Input from './components/Input';
 
 const initialState = {
   name: '',
@@ -42,6 +43,7 @@ function App() {
   const [isValid, setIsValid] = useState(false);
   const [passwordList, setPasswordList] = useState<DataTypeWithId[]>([]);
   const [inputValues, setInputValues] = useState<DataType>(initialState);
+  const [hidePassword, setHidePassword] = useState<boolean>(false);
   const { password } = inputValues;
 
   const handleClick = () => {
@@ -79,8 +81,9 @@ function App() {
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement >) => {
     const { value, id } = event.target;
+
     setInputValues(
       {
         ...inputValues,
@@ -88,6 +91,9 @@ function App() {
       },
     );
     checkIfIsAllValid();
+  };
+  const handlePassword = () => {
+    setHidePassword(!hidePassword);
   };
 
   const handleDelete = (itemId:string) => {
@@ -114,9 +120,20 @@ function App() {
               handleClick={ handleClick }
           />
       }
+      <Input
+        id="hidePassword"
+        label="Esconder senhas"
+        type="checkbox"
+        checked={ hidePassword }
+        handleChange={ handlePassword }
+      />
       {
         passwordList.length > 0
-          ? <Card handleDelete={ handleDelete } passwordList={ passwordList } />
+          ? <Card
+              handleDelete={ handleDelete }
+              hidePassword={ hidePassword }
+              passwordList={ passwordList }
+          />
           : <p>nenhuma senha cadastrada</p>
       }
     </div>

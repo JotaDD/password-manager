@@ -5,7 +5,7 @@ type ButtonProps = {
   text: string;
   disabled?: boolean;
   className?: string;
-  handleClick?: () => void;
+  handleClick?: (event:React.MouseEvent) => void
 };
 
 function Button({ text,

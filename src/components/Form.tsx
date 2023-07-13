@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Button from './Button';
 import Input from './Input';
 import ValidationDisplay from './ValidationDisplay';
@@ -19,6 +19,12 @@ type FormProps = {
 function Form(props: FormProps) {
   const { handleClick, handleSubmit, inputValues, handleChange, isValid } = props;
   const { name, login, password, url } = inputValues;
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const handlePassword = (event:React.MouseEvent) => {
+    event.preventDefault();
+    setShowPassword(!showPassword);
+  };
 
   const validate = (
     regex: RegExp,
@@ -46,8 +52,13 @@ function Form(props: FormProps) {
           value={ password }
           handleChange={ (event) => handleChange(event) }
           label="Senha"
-          type="password"
+          type={ !showPassword ? 'password' : 'text' }
           id="password"
+        />
+        <Button
+          dataTestId="show-hide-form-password"
+          text="Mostrar Senha"
+          handleClick={ (event) => handlePassword(event) }
         />
         <Input
           value={ url }
