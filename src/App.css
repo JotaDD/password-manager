@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto , sans-serif;
 }
 
 .valid-password-check {
@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #272A37;
+  background-color: #272a37;
 }
 
 .invalid-password-check {

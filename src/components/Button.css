@@ -1,7 +1,7 @@
 .button {
   background-color: transparent;
   border: none;
-  color: #3590F5;
+  color: #3590f5;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -9,18 +9,18 @@
 }
 
 .button:disabled {
-  color: grey;
-  background-color: darkgrey;
+  background-color: #505050;
+  color: #ccc;
 }
 
 .register-btn {
+  background-color: #3590f5;
   border-radius: 100px;
-  background-color: #3590F5;
-  color: #FFF;
+  color: white;
 }
 
 .bigger-btn {
-  width: 256px;
-  height: 55px;
   flex-shrink: 0;
+  height: 55px;
+  width: 256px;
 }
