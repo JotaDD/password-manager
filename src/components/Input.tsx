@@ -2,6 +2,7 @@ import { ChangeEvent } from 'react';
 import './Input.css';
 
 type InputProps = {
+  className?: string;
   id: string;
   label: string;
   type: string;
@@ -17,12 +18,14 @@ function Input({
   value = undefined,
   checked = undefined,
   handleChange,
+  className = '',
   ...props
 }: InputProps) {
   return (
     <label htmlFor={ id }>
       { label }
       <input
+        className={ className }
         value={ value }
         checked={ checked }
         onChange={ handleChange }

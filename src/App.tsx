@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2';
+import { BiSolidLock } from 'react-icons/bi';
 import { v4 as uuid } from 'uuid';
 import { useState } from 'react';
 import './App.css';
@@ -52,8 +53,8 @@ function App() {
   const checkIfIsAllValid = () => {
     if (
       checkIfIsNotEmpty((inputValues))
-       && validateNonEmptyRegex.test(password)
-     && password.match(regexV)
+      && validateNonEmptyRegex.test(password)
+      && password.match(regexV)
     ) {
       setIsValid(true);
     } else {
@@ -61,7 +62,7 @@ function App() {
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement >) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, id } = event.target;
     setInputValues(
       {
@@ -76,12 +77,12 @@ function App() {
     setHidePassword(!hidePassword);
   };
 
-  const handleDelete = (itemId:string) => {
+  const handleDelete = (itemId: string) => {
     setPasswordList(passwordList.filter(({ id }) => id !== itemId));
   };
 
   return (
-    <div>
+    <div className="container">
       <Title>
         Gerenciador de senhas
       </Title>
@@ -94,27 +95,45 @@ function App() {
               handleSubmit={ (event) => handleSubmit(event) }
               handleClick={ handleClick }
           />
-          : <Button
-              className="register-btn bigger-btn button"
-              text="Cadastrar Nova Senha"
-              handleClick={ handleClick }
-          />
+          : (
+            <div className="register">
+              <Button
+                className="register-btn bigger-btn button"
+                text="Cadastrar Nova Senha"
+                handleClick={ handleClick }
+              />
+              <hr />
+            </div>
+          )
+
       }
-      <Input
-        id="hidePassword"
-        label="Esconder senhas"
-        type="checkbox"
-        checked={ hidePassword }
-        handleChange={ handlePassword }
-      />
       {
         passwordList.length > 0
-          ? <Card
-              handleDelete={ handleDelete }
-              hidePassword={ hidePassword }
-              passwordList={ passwordList }
-          />
-          : <p>nenhuma senha cadastrada</p>
+          ? (
+            <div>
+              <Card
+                handleDelete={ handleDelete }
+                hidePassword={ hidePassword }
+                passwordList={ passwordList }
+              />
+              <Input
+                className="elle-on"
+                id="hidePassword"
+                label="Esconder senhas "
+                type="checkbox"
+                checked={ hidePassword }
+                handleChange={ handlePassword }
+              />
+            </div>
+          )
+          : (
+            <div className="no-password-container">
+              <p className="no-password">
+                Não há nenhuma senha cadastrada...
+              </p>
+              <BiSolidLock className="no-password" />
+            </div>
+          )
       }
     </div>
   );
