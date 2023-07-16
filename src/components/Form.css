@@ -1,4 +1,45 @@
 .form-container {
-  border: 1px solid red; 
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  height: 60vh;
   margin-bottom: 50px;
+  min-width: 400px;
+  padding: 0 8px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 420px;
+}
+
+.form-button {
+  align-items: center;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-button button {
+  margin: 16px 0;
+}
+
+.validation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 25px;
+
+  border-radius: 10px;
+  width: 80%;
+  background: #252730;
 }

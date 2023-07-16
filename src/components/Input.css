@@ -1,3 +1,36 @@
 label {
   color: #9cbce0;
+  display: flex;
+  flex-direction: column;
+}
+
+label:nth-child( 1 ) {
+  flex-basis: 100%;
+}
+
+
+label:nth-child( 2 ) {
+  align-items: space-between;
+  flex-basis: 48%;
+  z-index: 0;
+}
+
+.password-container {
+  flex-basis: 48%;
+  position: relative;
+}
+
+label:nth-child( 4 ) {
+  flex-basis: 100%;
+}
+
+input {
+  background-color: #3b3f50;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  height: 52px;
+  margin-bottom: 8px;
+  padding-left: 8px;
 }

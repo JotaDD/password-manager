@@ -8,6 +8,7 @@ type InputProps = {
   type: string;
   value?: string;
   checked?: boolean;
+  maxLength?: number;
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -18,6 +19,7 @@ function Input({
   value = undefined,
   checked = undefined,
   handleChange,
+  maxLength = 524288,
   className = '',
   ...props
 }: InputProps) {
@@ -25,6 +27,7 @@ function Input({
     <label htmlFor={ id }>
       { label }
       <input
+        maxLength={ maxLength }
         className={ className }
         value={ value }
         checked={ checked }

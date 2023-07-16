@@ -3,8 +3,8 @@ import Button from './Button';
 import './Card.css';
 
 type CardProps = {
-  handleDelete: (itemId:string)=> void;
-  hidePassword?: boolean
+  handleDelete: (itemId: string) => void;
+  hidePassword?: boolean;
   passwordList: DataTypeWithId[];
 };
 
@@ -25,9 +25,10 @@ function Card({ passwordList, handleDelete, hidePassword = false }: CardProps) {
                 </p>
                 <p>
                   <span>senha:</span>
-                  { !hidePassword
-                    ? <span>{ item.password }</span>
-                    : <span>******</span>}
+                  <span>
+                    { !hidePassword ? item.password : '******' }
+                  </span>
+
                 </p>
                 <Button
                   dataTestId="remove-btn"
