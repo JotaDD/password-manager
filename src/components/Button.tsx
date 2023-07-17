@@ -1,4 +1,5 @@
 import './Button.css';
+import { BiSolidTrash } from 'react-icons/bi';
 import PasswordIcon from './PasswordIcon';
 
 type ButtonProps = {
@@ -27,7 +28,10 @@ function Button({ text,
       onClick={ handleClick }
       disabled={ disabled }
     >
-      { text.length === 0 ? <PasswordIcon showPassword={ showPassword } /> : text }
+      { className === 'trash' && text.length === 0 && <BiSolidTrash /> }
+      { className === 'hide-eye' && text.length === 0
+        ? <PasswordIcon showPassword={ showPassword } />
+        : text }
     </button>
 
   );

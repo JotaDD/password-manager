@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import { BiSolidLock } from 'react-icons/bi';
+import { BiSolidLockOpen } from 'react-icons/bi';
 import { v4 as uuid } from 'uuid';
 import { useState } from 'react';
 import './App.css';
@@ -98,7 +98,7 @@ function App() {
           : (
             <div className="register">
               <Button
-                className="register-btn bigger-btn button"
+                className="register-btn button"
                 text="Cadastrar Nova Senha"
                 handleClick={ handleClick }
               />
@@ -110,12 +110,7 @@ function App() {
       {
         passwordList.length > 0
           ? (
-            <div>
-              <Card
-                handleDelete={ handleDelete }
-                hidePassword={ hidePassword }
-                passwordList={ passwordList }
-              />
+            <div className="card-container">
               <Input
                 className="elle-on"
                 id="hidePassword"
@@ -124,6 +119,12 @@ function App() {
                 checked={ hidePassword }
                 handleChange={ handlePassword }
               />
+              <Card
+                handleDelete={ handleDelete }
+                hidePassword={ hidePassword }
+                passwordList={ passwordList }
+              />
+
             </div>
           )
           : (
@@ -131,7 +132,7 @@ function App() {
               <p className="no-password">
                 Não há nenhuma senha cadastrada...
               </p>
-              <BiSolidLock className="no-password" />
+              <BiSolidLockOpen className="no-password" />
             </div>
           )
       }

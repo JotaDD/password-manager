@@ -17,9 +17,24 @@
   background-color: #3590f5;
   border-radius: 100px;
   color: white;
+  height: 55px;
+  width: 20%;
+}
+
+.register-btn:hover {
+  background-color: #3f9aff;
 }
 
 .bigger-btn {
   height: 55px;
   width: 100%;
+}
+
+.trash {
+  background-color: transparent;
+  border: none;
+  color: #f58989;
+  font-size: 28px;
+  position: absolute;
+  right: 8%;
 }
