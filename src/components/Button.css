@@ -19,9 +19,10 @@
   color: white;
   height: 55px;
   width: 20%;
+  min-width: 256px;
 }
 
-.register-btn:hover {
+.register-btn:enabled:hover {
   background-color: #3f9aff;
 }
 

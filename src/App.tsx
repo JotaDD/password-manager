@@ -110,7 +110,7 @@ function App() {
       {
         passwordList.length > 0
           ? (
-            <div className="card-container">
+            <div className="card-list">
               <Input
                 className="elle-on"
                 id="hidePassword"

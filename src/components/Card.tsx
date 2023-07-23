@@ -12,9 +12,8 @@ type CardProps = {
 
 function Card({ passwordList, handleDelete, hidePassword = false }: CardProps) {
   return (
-    <div>
+    <div className="card-container">
       {
-        // .sort((a: DataTypeWithId, b: DataTypeWithId) => b.id.localeCompare(a.id))
         passwordList
           .map((item: DataTypeWithId) => {
             return (

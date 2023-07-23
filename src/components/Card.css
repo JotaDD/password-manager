@@ -62,3 +62,43 @@ a {
   margin: 10px 0;
   width: 100%;
 }
+
+@media only screen and (min-width: 480px) {
+  .card-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    align-items: center;
+  }
+  .card {
+   margin: 30px ;
+  }
+}
+
+@media only screen and (min-width: 768px ) and (max-width: 1100px) {
+  .card-container{
+    justify-content: flex-start;
+    width: 760px;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+
+}
+@media only screen and (min-width: 1100px )  {
+   .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      width: 1140px;
+      align-items: center;
+    }
+  
+    .card {
+      margin: 30px;
+    } 
+}
+
+
+
