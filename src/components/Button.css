@@ -18,8 +18,8 @@
   border-radius: 100px;
   color: white;
   height: 55px;
-  width: 20%;
   min-width: 256px;
+  width: 20%;
 }
 
 .register-btn:enabled:hover {

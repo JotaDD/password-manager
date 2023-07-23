@@ -3,10 +3,10 @@
   border-radius: 10px;
   color: white;
   height: 240px;
+  margin-bottom: 60px;
   padding: 8px 15px;
   position: relative;
   width: 320px;
-  margin-bottom: 60px;
 }
 
 h4 {
@@ -17,13 +17,13 @@ h4 {
 }
 
 a {
+  align-items: center;
   color: #3590f5;
   display: flex;
   font-size: 28px;
   justify-content: space-between;
   text-align: right;
   text-decoration: none;
-  align-items: center;
 }
 
 .lock-icon {
@@ -63,42 +63,44 @@ a {
   width: 100%;
 }
 
-@media only screen and (min-width: 480px) {
-  .card-container {
+@media only screen and ( min-width : 480px ) {
 
+  .card-container {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 100%;
-    align-items: center;
   }
+
   .card {
-   margin: 30px ;
+    margin: 30px;
   }
 }
 
-@media only screen and (min-width: 768px ) and (max-width: 1100px) {
-  .card-container{
-    justify-content: flex-start;
-    width: 760px;
-    margin: auto;
+@media only screen and ( min-width : 768px ) and ( max-width : 1100px ) {
+
+  .card-container {
     flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: auto;
+    width: 760px;
   }
 
 }
-@media only screen and (min-width: 1100px )  {
-   .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      width: 1140px;
-      align-items: center;
-    }
-  
-    .card {
-      margin: 30px;
-    } 
+
+@media only screen and ( min-width : 1100px ) {
+
+  .card-container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 1140px;
+  }
+
+  .card {
+    margin: 30px;
+  }
 }
-
-
 

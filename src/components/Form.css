@@ -1,7 +1,6 @@
 .form-container {
-  border: 1px solid red;
-  box-sizing: border-box;
   align-items: center;
+  box-sizing: border-box;
   display: flex;
   flex-flow: column;
   height: 550px;
@@ -16,7 +15,6 @@
 }
 
 form {
-
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -25,8 +23,6 @@ form {
 
 .form-button {
   align-items: center;
-
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: center;

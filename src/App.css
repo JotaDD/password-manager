@@ -50,10 +50,12 @@ body {
 .valid-password-check {
   color: #aeffb6;
 }
+
 .card-list {
+  align-items: center;
+
   /* border: 1px solid blue; */
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
