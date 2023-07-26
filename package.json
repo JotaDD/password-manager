@@ -1,4 +1,5 @@
 {
+  "homepage": "https://jotadd.github.io/password-manager",
   "name": "password-manager",
   "version": "0.1.0",
   "private": true,
@@ -18,6 +19,8 @@
   "scripts": {
     "dev": "vite --open",
     "build": "tsc && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage --watch=false",
@@ -34,6 +37,7 @@
     "@types/uuid": "^9.0.2",
     "@vitejs/plugin-react-swc": "^3.1.0",
     "@vitest/coverage-c8": "^0.30.1",
+    "gh-pages": "^5.0.0",
     "jsdom": "^21.1.0",
     "stylelint": "^14.16.1",
     "stylelint-order": "^5.0.0",
